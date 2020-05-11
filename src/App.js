@@ -7,10 +7,13 @@ import { Home } from "./pages/Home";
 import { Recipes } from "./pages/Recipes";
 import { SingleRecipe } from "./pages/SingleRecipe";
 import { Default } from "./pages/Default";
+import { NavBar } from "./components/NavBar";
 
 function App() {
   return (
     <Router>
+      <NavBar />
+
       <main>
         <Switch>
           <Route path="/" exact component={Home} />
