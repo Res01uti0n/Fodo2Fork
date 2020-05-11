@@ -1,5 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
+
+import { Search } from "../components/Search";
+import { RecipeList } from "../components/RecipeList";
+import { recipesData } from "../data/tempList";
 
 export const Recipes = () => {
-  return <h1>Recipes page</h1>;
+  const [values, setValues] = useState({
+    recipes: recipesData,
+    search: "",
+  });
+
+  const handleChange = (e) => {
+    setValues({ ...values, search: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setValues({ ...values, search: e.target.value });
+  };
+
+  return (
+    <>
+      <Search
+        search={values.search}
+        handleSubmit={handleSubmit}
+        handleChange={handleChange}
+      />
+      <RecipeList recipes={values.recipes} />
+    </>
+  );
 };
