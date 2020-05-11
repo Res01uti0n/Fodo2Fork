@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,12 +10,16 @@ import { Default } from "./pages/Default";
 
 function App() {
   return (
-    <div>
-      <Home />
-      <Recipes />
-      <SingleRecipe />
-      <Default />
-    </div>
+    <Router>
+      <main>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/recipes" component={Recipes} />
+          <Route path="/recipes/:id" component={SingleRecipe} />
+          <Route path="*" component={Default} />
+        </Switch>
+      </main>
+    </Router>
   );
 }
 
