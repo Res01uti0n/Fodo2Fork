@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import { Search } from "../components/Search";
 import { RecipeList } from "../components/RecipeList";
-import { recipesData } from "../data/tempList";
+import { recipeData } from "../data/tempList";
 
 export const Recipes = () => {
   const [values, setValues] = useState({
-    recipes: recipesData,
+    recipes: recipeData,
     search: "",
   });
 
