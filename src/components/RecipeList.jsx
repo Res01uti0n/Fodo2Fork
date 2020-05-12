@@ -1,11 +1,23 @@
-import React from 'react'
+import React from "react";
 
-import { Recipe } from './Recipe'
+import { Recipe } from "./Recipe";
 
-export const RecipeList = () => {
+export const RecipeList = ({ recipes }) => {
   return (
-    <div>
-      <Recipe />
-    </div>
-  )
-}
+    <>
+      <div className="container py-5">
+        <div className="row">
+          <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
+            <h1 className="text-slanted">Recipe list</h1>
+          </div>
+        </div>
+
+        <div className="row">
+          {recipes.map((recipe) => (
+            <Recipe key={recipe.recipe_id} recipe={recipe} />
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
