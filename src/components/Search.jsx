@@ -31,7 +31,7 @@ export const Search = ({ handleChange, handleSubmit, search }) => {
                   onClick={handleSubmit}
                   className="input-group-text bg-primary text-white"
                 >
-                  <i class="fas fa-search"></i>
+                  <i className="fas fa-search"></i>
                 </button>
               </div>
             </div>
