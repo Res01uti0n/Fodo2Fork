@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import { recipeData } from "../data/tempDetails";
-import { Link } from "react-router-dom";
+
 
 export const SingleRecipe = ({ match }) => {
   const [values, setValues] = useState({
@@ -9,6 +10,23 @@ export const SingleRecipe = ({ match }) => {
     id: match.params.id,
     loading: false,
   });
+
+  useEffect(()=> {
+    fetch(`https://community-food2fork.p.rapidapi.com/get?rId=${values.id}`, {
+      method: "GET",
+      headers: {
+        "x-rapidapi-host": "community-food2fork.p.rapidapi.com",
+        "x-rapidapi-key": "52df75e8f3mshaea84a63399c3ebp14d0f0jsn2c3f0c90b6dc",
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        setValues({...values, recipe: response.json().recipe, loading: false})
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [])
 
   if (values.loading) {
     return (
